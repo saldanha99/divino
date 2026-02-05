@@ -1,0 +1,149 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Machine {
+  id             String        @id @default(uuid())
+  slug           String        @unique
+  name           String
+  model          String
+  brand          String
+  category       String        // e.g. "Escavadeira", "Retroescavadeira"
+  description    String
+  technicalSpecs Json?         // Flexible storage for specs (weight, power, etc.)
+  images         String[]
+  status         MachineStatus @default(AVAILABLE)
+  
+  projectId      String?
+  project        Project?      @relation(fields: [projectId], references: [id])
+  
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  @@map("machines")
+}
+
+model Lead {
+  id           String     @id @default(uuid())
+  name         String
+  company      String?
+  contact      String     // WhatsApp/Email
+  origin       String?    // For transport
+  destination  String?    // For transport
+  cargoDetails String?    // Weight, type
+  serviceType  String?    // Terraplenagem, Demolicao, etc.
+  city         String?
+  urgency      String?    // Imediato, Planejamento
+  notes        String?
+  status       LeadStatus @default(NEW)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  @@map("leads")
+}
+
+model BlogPost {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  title       String
+  excerpt     String?
+  content     String
+  coverImage  String?
+  publishedAt DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("blog_posts")
+}
+
+model GlossaryTerm {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  term        String
+  definition  String
+  relatedTerm String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+
+  @@map("glossary_terms")
+}
+
+model WhatsappConfig {
+  id           String   @id @default(uuid())
+  instanceName String   @unique
+  status       String   @default("DISCONNECTED") // DISCONNECTED, CONNECTED, PAIRING
+  apiKey       String?  // Optional: if each instance has its own token
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+
+
+  @@map("whatsapp_configs")
+}
+
+model Service {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  name        String
+  description String
+  features    Json?    // Array of strings
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("services")
+}
+
+model Location {
+  id        String   @id @default(uuid())
+  slug      String   @unique
+  city      String
+  state     String   @default("SP")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("locations")
+}
+
+model Project {
+  id          String        @id @default(uuid())
+  name        String
+  client      String
+  status      ProjectStatus @default(IN_PROGRESS)
+  address     String?
+  startDate   DateTime      @default(now())
+  endDate     DateTime?
+  machines    Machine[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@map("projects")
+}
+
+enum MachineStatus {
+  AVAILABLE
+  MAINTENANCE
+  RENTED
+  IN_USE // Internal project use
+}
+
+enum ProjectStatus {
+  PLANNING
+  IN_PROGRESS
+  COMPLETED
+  ON_HOLD
+}
+
+enum LeadStatus {
+  NEW
+  QUOTING
+  APPROVED
+  EXECUTING
+  COMPLETED
+  LOST
+}
