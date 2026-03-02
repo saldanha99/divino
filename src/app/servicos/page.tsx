@@ -52,33 +52,14 @@ const services = [
 export default function ServicesPage() {
     return (
         <main className="min-h-screen bg-[#F2F2F7]">
-            {/* HERO - Updated for Premium Look */}
-            <section className="relative h-[60vh] min-h-[500px] w-full flex items-center justify-center overflow-hidden bg-black pb-20">
-                <div className="absolute inset-0 z-0 overflow-hidden">
-                    <div className="absolute inset-0 bg-black/60 z-10"></div>
-                    <video
-                        className="w-full h-full object-cover opacity-50 pointer-events-none"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        poster="/images/retroescavadeira-sjc.jpg"
-                    >
-                        <source src="/images/video hero.mp4" type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#F2F2F7] via-transparent to-black/60 z-10"></div>
-                </div>
-
-                <div className="container-custom relative z-20 text-center px-4 pt-20">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-ios-dark text-brand-yellow font-bold text-xs uppercase tracking-widest mb-6 border border-white/10 shadow-lg">
-                        Soluções Completas em Infraestrutura
-                    </div>
-                    <h1 className="text-4xl md:text-7xl font-black text-white mb-6 tracking-tight drop-shadow-2xl">
-                        Nossas <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-yellow-600">Soluções</span>
+            {/* HERO */}
+            <section className="bg-black pt-32 pb-20 px-4 text-center">
+                <div className="container-custom">
+                    <h1 className="text-4xl md:text-6xl font-black text-white mb-6">
+                        Nossas <span className="text-brand-yellow">Soluções</span>
                     </h1>
-                    <p className="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-lg">
-                        Engenharia e logística pesada para obras que transformam o cenário urbano e rodoviário.
+                    <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">
+                        Engenharia e logística pesada para obras de infraestrutura que transformam o cenário urbano e rodoviário.
                     </p>
                 </div>
             </section>

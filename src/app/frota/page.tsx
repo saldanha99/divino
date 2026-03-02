@@ -24,26 +24,29 @@ export default async function FleetPage() {
     return (
         <main className="min-h-screen bg-[#F2F2F7]">
 
-            {/* HERO SECTION - Updated for Premium Look */}
-            <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden bg-black">
-                <div className="absolute inset-0 z-0 overflow-hidden">
-                    <div className="absolute inset-0 bg-black/60 z-10"></div>
-                    <video
-                        className="w-full h-full object-cover opacity-50 pointer-events-none"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        poster="/images/frota-hero.jpg"
-                    >
-                        <source src="/images/video hero.mp4" type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#F2F2F7] via-transparent to-black/60 z-10"></div>
+            {/* HERO SECTION */}
+            <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+                {/* Background Image */}
+                {/* Background Image */}
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src="/images/frota-hero.jpg"
+                        alt="Frota Divino Terraplanagem"
+                        fill
+                        className="object-cover"
+                        priority
+                    />
                 </div>
 
-                <div className="container-custom relative z-20 text-center px-4 pt-20">
-                    <span className="inline-block py-1 px-4 rounded-full bg-brand-yellow text-black text-xs font-black uppercase tracking-widest mb-6 shadow-lg animate-fade-in">
+                {/* Overlay Gradient (Requested) */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
+                <div className="absolute inset-0 bg-black/20 z-10"></div>
+
+                {/* Bottom Fade to Page Background */}
+                <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#F2F2F7] to-transparent z-20"></div>
+
+                <div className="container-custom relative z-20 text-center px-4 pt-20 pb-32">
+                    <span className="inline-block py-1 px-3 rounded-full bg-brand-yellow/90 backdrop-blur text-black text-xs font-black uppercase tracking-widest mb-6 animate-fade-in">
                         Frota Própria e Revisada
                     </span>
                     <h1 className="text-4xl md:text-7xl font-black text-white mb-6 tracking-tight drop-shadow-2xl">
@@ -57,7 +60,7 @@ export default async function FleetPage() {
             </section>
 
             {/* FLEET GRID (Client Component) */}
-            <section className="relative pb-16">
+            <section className="relative pb-16 pt-8">
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                     <AnimatedGridPattern
                         numSquares={30}

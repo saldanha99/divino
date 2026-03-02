@@ -12,26 +12,18 @@ export default function TransportPage() {
     return (
         <main className="min-h-screen bg-[#F2F2F7] pt-20">
 
-            {/* HERO SECTION - Updated for Premium Look */}
+            {/* HERO SECTION */}
             <section className="relative h-[65vh] flex items-center justify-center overflow-hidden bg-black rounded-b-[40px] shadow-2xl mx-4 mt-4">
-                <div className="absolute inset-0 z-0 overflow-hidden">
-                    <div className="absolute inset-0 bg-black/60 z-10"></div>
-                    <video
-                        className="w-full h-full object-cover opacity-50 pointer-events-none"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        poster="/images/terraplanagem.jpg"
-                    >
-                        <source src="/images/video hero.mp4" type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 z-10"></div>
+                <div className="absolute inset-0 z-0">
+                    <div
+                        className="absolute inset-0 bg-cover bg-center opacity-40"
+                        style={{ backgroundImage: "url('https://blog.divinoterraplanagem.com.br/wp-content/uploads/2026/02/terraplanagem-SJC.png')" }}
+                    ></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60"></div>
                 </div>
 
                 <div className="container-custom relative z-10 text-center text-white px-4">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-ios-dark text-brand-yellow font-bold text-xs uppercase tracking-widest mb-6 border border-white/10 shadow-lg">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-ios-dark text-brand-yellow font-bold text-xs uppercase tracking-widest mb-6 border border-white/10">
                         Logística Pesada & Cargas Indivisíveis
                     </div>
 

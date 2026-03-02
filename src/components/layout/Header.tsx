@@ -12,7 +12,6 @@ import SolutionsMegaMenu from './SolutionsMegaMenu';
 export function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
     const pathname = usePathname();
     const isLightPage = pathname?.includes('/servicos/terraplenagem');
 
@@ -53,20 +52,15 @@ export function Header() {
                             <Link href="/" className="hover:text-brand-yellow transition-colors">Home</Link>
 
                             {/* Mega Menu Trigger */}
-                            <div
-                                className="relative flex items-center h-full"
-                                onMouseEnter={() => setIsMegaMenuOpen(true)}
-                                onMouseLeave={() => setIsMegaMenuOpen(false)}
-                            >
-                                <button className={`flex items-center gap-1 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent ${isMegaMenuOpen ? 'text-brand-yellow border-brand-yellow' : ''}`}>
-                                    Soluções <ChevronDown size={14} className={`transition-transform duration-300 ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
-                                </button>
+                            <div className="relative group h-16 flex items-center">
+                                <Link href="/servicos" className="flex items-center gap-1 hover:text-brand-yellow transition-colors group-hover:text-brand-yellow">
+                                    Soluções <ChevronDown size={14} className="transition-transform duration-300 group-hover:rotate-180" />
+                                </Link>
 
-                                {isMegaMenuOpen && (
-                                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 group-hover:block transition-all duration-300">
-                                        <SolutionsMegaMenu />
-                                    </div>
-                                )}
+                                {/* Dropdown Container */}
+                                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[800px] pt-4 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                                    <SolutionsMegaMenu />
+                                </div>
                             </div>
 
                             <Link href="/frota" className="hover:text-brand-yellow transition-colors">Frota</Link>
