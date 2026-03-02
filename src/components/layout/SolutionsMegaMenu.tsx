@@ -51,7 +51,7 @@ const solutions = [
 
 export default function SolutionsMegaMenu() {
     return (
-        <div className="absolute top-full left-1/2 -translate-x-1/2 w-[800px] pt-4 z-50">
+        <div className="relative w-[85vw] max-w-[800px] h-auto z-50">
             <div className="p-4 rounded-3xl glass-ios border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.15)] animate-fade-in-up origin-top overflow-hidden relative">
                 <div className="bg-white/50 backdrop-blur-3xl absolute inset-0 -z-10"></div>
 

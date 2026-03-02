@@ -12,6 +12,8 @@
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-scale-in: scaleIn 0.3s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+  --animate-fade-in: fadeIn 0.4s ease-out forwards;
+  --animate-fade-in-up: fadeInUp 0.5s ease-out forwards;
 }
 
 /* iOS-like Scrollbar */
@@ -98,5 +100,20 @@ body {
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

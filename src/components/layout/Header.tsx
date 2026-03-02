@@ -54,16 +54,18 @@ export function Header() {
 
                             {/* Mega Menu Trigger */}
                             <div
-                                className="relative group h-16 flex items-center"
+                                className="relative flex items-center h-full"
                                 onMouseEnter={() => setIsMegaMenuOpen(true)}
                                 onMouseLeave={() => setIsMegaMenuOpen(false)}
                             >
-                                <button className={`flex items-center gap-1 hover:text-brand-yellow transition-colors ${isMegaMenuOpen ? 'text-brand-yellow' : ''}`}>
+                                <button className={`flex items-center gap-1 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent ${isMegaMenuOpen ? 'text-brand-yellow border-brand-yellow' : ''}`}>
                                     Soluções <ChevronDown size={14} className={`transition-transform duration-300 ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
                                 </button>
 
                                 {isMegaMenuOpen && (
-                                    <SolutionsMegaMenu />
+                                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 group-hover:block transition-all duration-300">
+                                        <SolutionsMegaMenu />
+                                    </div>
                                 )}
                             </div>
 
