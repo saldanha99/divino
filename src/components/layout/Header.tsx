@@ -29,9 +29,12 @@ export function Header() {
     return (
         <>
             <header
-                className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'py-2' : 'py-4'}`}
+                className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${isScrolled ? 'pt-4 px-4 md:px-8' : 'pt-0 px-0'}`}
             >
-                <div className={`mx-4 md:mx-auto max-w-7xl rounded-2xl transition-all duration-300 ${isScrolled ? 'glass-ios shadow-lg bg-white/80' : 'bg-transparent'}`}>
+                <div className={`mx-auto transition-all duration-500 ease-in-out overflow-visible border ${isScrolled
+                        ? 'max-w-6xl glass-ios shadow-2xl bg-white/70 rounded-full border-white/50 backdrop-blur-md'
+                        : 'max-w-7xl bg-transparent rounded-none border-transparent'
+                    }`}>
                     <div className="px-6 h-16 flex items-center justify-between relative">
                         {/* Logo */}
                         <Link href="/" className="flex items-center gap-3 group">
